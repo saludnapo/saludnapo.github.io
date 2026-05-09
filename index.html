@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///C:/Users/Ernesto%20Tonato/Downloads/salud-napo_1.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dirección Provincial de Salud de Napo</title>
+  <link href="./index_files/css2" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:    #0055a5;
+      --azul2:   #003f82;
+      --rojo:    #e30613;
+      --amarillo:#ffd700;
+      --gris:    #444;
+      --fondo:   #f4f6f9;
+    }
+
+    body { font-family: 'Open Sans', sans-serif; background: var(--fondo); color: var(--gris); }
+
+    /* ══════════════════════ HERO ══════════════════════ */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Palacio_de_Carondelet%2C_Quito.jpg/1280px-Palacio_de_Carondelet%2C_Quito.jpg')
+                  center/cover no-repeat;
+      filter: brightness(.78);
+    }
+
+    /* franja azul transparente abajo */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,40,100,.6) 100%);
+    }
+
+    /* ── Logo "El Nuevo Ecuador" ── */
+    .hero-logo {
+      position: absolute; z-index: 2;
+      bottom: 28px; left: 30px;
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .logo-text {
+      display: flex; flex-direction: column; line-height: 1;
+    }
+    .logo-nuevo {
+      font-family: 'Barlow', sans-serif;
+      font-size: .75rem; font-weight: 600;
+      color: #fff; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .logo-ec {
+      font-family: 'Barlow', sans-serif;
+      font-size: 2.4rem; font-weight: 800; font-style: italic;
+      color: #fff; letter-spacing: -.02em; line-height: 1;
+    }
+
+    /* rayas tricolor */
+    .rayas {
+      display: flex; flex-direction: column; gap: 4px; margin-left: 4px;
+    }
+    .raya { width: 6px; border-radius: 2px; }
+    .raya:nth-child(1){ height: 28px; background: var(--amarillo); }
+    .raya:nth-child(2){ height: 22px; background: var(--azul); }
+    .raya:nth-child(3){ height: 16px; background: var(--rojo); }
+
+    /* ── Nombre institución ── */
+    .hero-nombre {
+      position: absolute; z-index: 2;
+      bottom: 28px; right: 90px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: #fff; text-align: right;
+      text-shadow: 0 1px 6px rgba(0,0,0,.5);
+    }
+
+    /* ── Redes sociales ── */
+    .redes {
+      position: absolute; z-index: 2;
+      top: 50%; right: 18px; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .red-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      border: 1.5px solid rgba(255,255,255,.5);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      color: #fff;
+      transition: background .2s;
+      backdrop-filter: blur(4px);
+    }
+    .red-btn:hover { background: rgba(255,255,255,.36); }
+
+    /* ══════════════════════ CUERPO ══════════════════════ */
+    .contenedor {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+    }
+
+    /* ── Título sección ── */
+    .sec-titulo {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.55rem; font-weight: 800;
+      color: var(--azul2);
+      margin-bottom: 1.6rem;
+      border-left: 5px solid var(--rojo);
+      padding-left: .75rem;
+    }
+
+    /* ── GRID iconos ── */
+    .iconos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .icono-card {
+      border-radius: 10px;
+      overflow: hidden;
+      text-decoration: none;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      aspect-ratio: 1 / .72;
+      padding: .6rem .4rem;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: .78rem;
+      text-align: center;
+      color: #fff;
+      line-height: 1.25;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,.18);
+      position: relative;
+    }
+    .icono-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.25); }
+
+    /* emoji / icono grande */
+    .icono-card .emoji { font-size: 2rem; margin-bottom: .35rem; display: block; }
+
+    /* colores */
+    .bg-mail   { background: linear-gradient(135deg,#0e71b9,#0a4f87); }
+    .bg-cloud1 { background: linear-gradient(135deg,#1a3a5c,#0d2440); }
+    .bg-cloud2 { background: linear-gradient(135deg,#1a3a5c,#0d2440); }
+    .bg-glpi   { background: linear-gradient(135deg,#0096d6,#006fa6); }
+    .bg-moodle { background: linear-gradient(135deg,#f5a623,#d4860a); }
+    .bg-stats  { background: linear-gradient(135deg,#1fc8db,#0e8fa6); }
+    .bg-epi    { background: linear-gradient(135deg,#e8604c,#b8341e); }
+    .bg-inv    { background: linear-gradient(135deg,#003087,#001a50); }
+    .bg-quipux { background: linear-gradient(135deg,#2980b9,#1a5276); }
+    .bg-lab1   { background: linear-gradient(135deg,#ecf0f1,#bdc3c7); color:#333; }
+    .bg-lab2   { background: linear-gradient(135deg,#ecf0f1,#bdc3c7); color:#333; }
+    .bg-rpis   { background: linear-gradient(135deg,#8e44ad,#5b2c6f); }
+
+    /* ── COLUMNA DERECHA ── */
+    .col-derecha { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .banner-salud {
+      border-radius: 12px;
+      background: linear-gradient(135deg,#f9c418,#f0a500);
+      padding: 1.4rem 1.2rem;
+      color: #1a1a1a;
+      font-family: 'Barlow', sans-serif;
+    }
+    .banner-salud .big { font-size: 1.3rem; font-weight: 800; line-height: 1.2; }
+    .banner-salud .sub { font-size: .85rem; font-weight: 600; margin-top: .4rem; }
+    .banner-salud .tag {
+      display: inline-block; margin-top: .8rem;
+      background: var(--azul); color: #fff;
+      border-radius: 20px; padding: .25rem .8rem;
+      font-size: .75rem; font-weight: 700;
+    }
+
+    .banner-nino {
+      border-radius: 12px;
+      background: linear-gradient(135deg,#43b89c,#2a7d6a);
+      padding: 1.4rem 1.2rem;
+      color: #fff;
+      font-family: 'Barlow', sans-serif;
+    }
+    .banner-nino .big { font-size: 1.15rem; font-weight: 800; }
+    .banner-nino .sub { font-size: .82rem; margin-top: .3rem; opacity: .9; }
+
+    /* ══════════════════════ FOOTER ══════════════════════ */
+    footer {
+      background: #fff;
+      border-top: 3px solid var(--azul);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo { display: flex; align-items: center; gap: 8px; }
+    .footer-logo .logo-ec { font-size: 1.6rem; color: var(--azul2); }
+    .footer-logo .logo-nuevo { color: var(--gris); }
+
+    .footer-contacto {
+      text-align: right;
+      font-size: .82rem;
+      line-height: 1.7;
+      color: var(--gris);
+    }
+    .footer-contacto strong { color: var(--azul2); }
+
+    /* ══════════════════════ RESPONSIVE ══════════════════════ */
+    @media (max-width: 768px) {
+      .contenedor { grid-template-columns: 1fr; }
+      .iconos-grid { grid-template-columns: repeat(3, 1fr); }
+      .hero-nombre { display: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-contacto { text-align: left; }
+    }
+    @media (max-width: 480px) {
+      .iconos-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Logo -->
+  <div class="hero-logo">
+    <div class="logo-text">
+      <span class="logo-nuevo">EL NUEVO</span>
+      <span class="logo-ec">ECUADOR</span>
+    </div>
+    <div class="rayas">
+      <div class="raya"></div>
+      <div class="raya"></div>
+      <div class="raya"></div>
+    </div>
+  </div>
+
+  <!-- Nombre institución -->
+  <div class="hero-nombre">Dirección Provincial de Salud de Napo</div>
+
+  <!-- Redes sociales -->
+  <div class="redes">
+    <a class="red-btn" href="file:///C:/Users/Ernesto%20Tonato/Downloads/salud-napo_1.html#" title="Facebook">𝔽</a>
+    <a class="red-btn" href="file:///C:/Users/Ernesto%20Tonato/Downloads/salud-napo_1.html#" title="X / Twitter">𝕏</a>
+    <a class="red-btn" href="file:///C:/Users/Ernesto%20Tonato/Downloads/salud-napo_1.html#" title="Instagram">📷</a>
+  </div>
+</header>
+
+<!-- ══════════ CUERPO ══════════ -->
+<div class="contenedor">
+
+  <!-- Columna izquierda: sistemas -->
+  <section>
+    <h2 class="sec-titulo">Sistemas institucionales</h2>
+
+    <div class="iconos-grid">
+
+      <!-- Zimbra: correo institucional MSP Zona 2 -->
+      <a class="icono-card bg-mail" href="https://mail.saludzona2.gob.ec/" target="_blank" rel="noopener" title="Correo institucional Zimbra - MSP Zona 2">
+        <span class="emoji">✉️</span>Zimbra<br>Correo
+      </a>
+
+      <!-- OwnCloud Zona 2: nube interna MSP -->
+      <a class="icono-card bg-cloud1" href="https://nube.saludzona2.gob.ec/" target="_blank" rel="noopener" title="Nube institucional OwnCloud - Zona 2">
+        <span class="emoji">☁️</span>OwnCloud<br>Zona 2
+      </a>
+
+      <!-- OwnCloud Oficina Técnica -->
+      <a class="icono-card bg-cloud2" href="https://nube.msp.gob.ec/" target="_blank" rel="noopener" title="Nube institucional OwnCloud - Oficina Técnica MSP">
+        <span class="emoji">☁️</span>OwnCloud<br>Of. Técnica
+      </a>
+
+      <!-- GLPI: sistema de mesa de ayuda MSP -->
+      <a class="icono-card bg-glpi" href="https://glpi.msp.gob.ec/" target="_blank" rel="noopener" title="GLPI - Mesa de Ayuda Ministerio de Salud Pública">
+        <span class="emoji">🖥️</span>GLPI<br>Mesa de Ayuda
+      </a>
+
+      <!-- Moodle: plataforma virtual de capacitación MSP (URL confirmada) -->
+      <a class="icono-card bg-moodle" href="https://capacitacion.msp.gob.ec/" target="_blank" rel="noopener" title="Plataforma Moodle de Capacitación - MSP Ecuador">
+        <span class="emoji">🎓</span>Moodle<br>Capacitación
+      </a>
+
+      <!-- Estadísticas Zona 2: pendiente confirmar URL interna -->
+      <a class="icono-card bg-stats" href="https://estadisticas.saludzona2.gob.ec/" target="_blank" rel="noopener" title="Estadísticas Zona 2 - MSP Ecuador">
+        <span class="emoji">📊</span>Estadísticas<br>Zona 2
+      </a>
+
+      <!-- Epidemiología MSP -->
+      <a class="icono-card bg-epi" href="https://www.salud.gob.ec/epidemiologia/" target="_blank" rel="noopener" title="Epidemiología - Ministerio de Salud Pública del Ecuador">
+        <span class="emoji">🔬</span>Epidemiología<br>MSP
+      </a>
+
+      <!-- Sistema Nacional de Inventarios / eSBYE del MEF (URL confirmada) -->
+      <a class="icono-card bg-inv" href="https://ebye.finanzas.gob.ec/" target="_blank" rel="noopener" title="eSBYE - Sistema de Bienes y Existencias - Ministerio de Finanzas">
+        <span class="emoji">📦</span>Sistema Nac.<br>Inventarios
+      </a>
+
+      <!-- Quipux: gestión documental (URL confirmada) -->
+      <a class="icono-card bg-quipux" href="https://web.gestiondocumental.gob.ec/" target="_blank" rel="noopener" title="Quipux - Sistema de Gestión Documental del Ecuador">
+        <span class="emoji">📁</span>Quipux<br>Documentos
+      </a>
+
+      <!-- ClinicaLab Satelital: URL interna — reemplazar con la URL real -->
+      <a class="icono-card bg-lab1" href="https://clinicalab.msp.gob.ec/" target="_blank" rel="noopener" title="ClinicaLab Satelital — reemplazar con URL interna correcta">
+        <span class="emoji">🧪</span>ClinicaLab<br>Satelital
+      </a>
+
+      <!-- ClinicaLab Archidona: URL interna — reemplazar con la URL real -->
+      <a class="icono-card bg-lab2" href="https://clinicalab.msp.gob.ec/" target="_blank" rel="noopener" title="ClinicaLab Archidona — reemplazar con URL interna correcta">
+        <span class="emoji">🧫</span>ClinicaLab<br>Archidona
+      </a>
+
+      <!-- Red Pública Integral de Salud MSP -->
+      <a class="icono-card bg-rpis" href="https://www.salud.gob.ec/red-publica-integral-de-salud/" target="_blank" rel="noopener" title="Red Pública Integral de Salud - MSP Ecuador">
+        <span class="emoji">🏥</span>Red Pública<br>Integral Salud
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Columna derecha: banners -->
+  <aside class="col-derecha">
+
+    <div class="banner-salud">
+      <div class="big">🦟 La Fiebre Amarilla<br>se puede prevenir</div>
+      <div class="sub">1 VACUNA · Una sola vez en la vida</div>
+      <span class="tag">Acércate a tu centro de salud</span>
+    </div>
+
+    <div class="banner-nino">
+      <div class="big">👶 Control de Niño Sano</div>
+      <div class="sub">Lleva a tu hijo/a a sus controles periódicos de salud. ¡Su crecimiento es nuestra prioridad!</div>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-logo">
+    <div class="logo-text">
+      <span class="logo-nuevo" style="color:var(--gris);font-size:.65rem">EL NUEVO</span>
+      <span class="logo-ec" style="font-size:1.5rem;color:var(--azul2);font-family:&#39;Barlow&#39;,sans-serif;font-weight:800;font-style:italic">ECUADOR</span>
+    </div>
+    <div class="rayas" style="margin-left:4px">
+      <div class="raya" style="height:20px;width:5px;background:var(--amarillo);border-radius:2px"></div>
+      <div class="raya" style="height:15px;width:5px;background:var(--azul);border-radius:2px"></div>
+      <div class="raya" style="height:10px;width:5px;background:var(--rojo);border-radius:2px"></div>
+    </div>
+  </div>
+
+  <div class="footer-contacto">
+    <strong>Dirección Provincial de Salud de Napo</strong><br>
+    Av. 15 de Noviembre y Zamora · Código postal: 150150<br>
+    Tena – Ecuador &nbsp;|&nbsp; Teléfono: <strong>+593-6-2886-420</strong>
+  </div>
+</footer>
+
+
+
+</body></html>
